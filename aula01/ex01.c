@@ -19,13 +19,12 @@ Arv* menor_valor(Arv* a);
 
 
 int main () {
-
     Arv* a = arv_cria();
     a = arv_insere(a,8);
     a = arv_insere(a,6);
     a = arv_insere(a,3);
 
-
+    menor_valor(a);
 
 
     return 0;
@@ -34,12 +33,15 @@ int main () {
 Arv* menor_valor(Arv* a) {
     if (a == NULL) {
         printf ("Arvore nula!\n");
+        return NULL;
     }
-        else if (a -> esq == NULL) {
-                a = menor_valor;
-                printf ("%d", menor_valor);
+        if (a -> esq != NULL) {
+            a = menor_valor(a-> esq); 
         }
-}
+            else {
+            printf ("%d", a->info);
+            }
+    }
 
 
 Arv* arv_insere(Arv* a, int v) {
