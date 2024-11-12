@@ -15,22 +15,28 @@ void arv_imprime(Arv* a);
 Arv* arv_busca_iterativa(Arv* a, int v);
 Arv* arv_busca_recursiva(Arv* a, int v);
 Arv* menor_valor(Arv* a);
-
-
+int maiores_que_x(Arv* a, int x);
+int maior_valor(Arv* a);
 
 int main () {
+
     Arv* a = arv_cria();
     a = arv_insere(a,8);
-    a = arv_insere(a,6);
+    a = arv_insere(a,2);
     a = arv_insere(a,3);
 
-    menor_valor(a);
+    //menor_valor(a); // ex01
+    //printf ("\n");
+    //maiores_que_x(a, 5); // ex02
+    //printf ("\n");
+    maior_valor (a); // ex03
+    printf ("\n");
 
 
     return 0;
 }
 
-Arv* menor_valor(Arv* a) {
+Arv* menor_valor(Arv* a) { //ex01
     if (a == NULL) {
         printf ("Arvore nula!\n");
         return NULL;
@@ -41,7 +47,38 @@ Arv* menor_valor(Arv* a) {
             else {
             printf ("%d", a->info);
             }
+}
+
+int maiores_que_x(Arv* a, int x) { //ex02
+    int valores = 0;
+
+    if (a == NULL) {
+        printf ("Arvore esta vazia!\n");
+        return 0;
     }
+    
+    if (a -> info > x) {
+      return 1;  
+    } 
+    valores = valores + maiores_que_x(a->esq,x);
+    valores = valores + maiores_que_x(a->dir,x);
+    return valores;
+}
+
+int maior_valor(Arv* a) { //ex03
+    if (a == NULL) {
+        return 0;
+    }
+        if (a->dir != NULL) {
+            a = maior_valor (a->dir);
+        }
+        else {
+            printf ("%d", a->info);
+        }
+}
+
+
+
 
 
 Arv* arv_insere(Arv* a, int v) {
@@ -88,5 +125,9 @@ Arv* arv_busca_iterativa(Arv* r, int v) {
             return r;
         }
     }
+    return NULL;
+}
+
+Arv* arv_cria() {
     return NULL;
 }
