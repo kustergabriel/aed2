@@ -17,6 +17,7 @@ Arv* arv_busca_recursiva(Arv* a, int v);
 Arv* menor_valor(Arv* a);
 int maiores_que_x(Arv* a, int x);
 int maior_valor(Arv* a);
+int verifica_abb(Arv* a);
 
 int main () {
 
@@ -29,9 +30,9 @@ int main () {
     //printf ("\n");
     //maiores_que_x(a, 5); // ex02
     //printf ("\n");
-    maior_valor (a); // ex03
-    printf ("\n");
-
+    //maior_valor (a); // ex04
+    //printf ("\n");
+    verifica_abb(a);
 
     return 0;
 }
@@ -65,7 +66,7 @@ int maiores_que_x(Arv* a, int x) { //ex02
     return valores;
 }
 
-int maior_valor(Arv* a) { //ex03
+int maior_valor(Arv* a) { //ex04
     if (a == NULL) {
         return 0;
     }
@@ -75,6 +76,11 @@ int maior_valor(Arv* a) { //ex03
         else {
             printf ("%d", a->info);
         }
+}
+
+int verifica_abb(Arv* a) { //ex05
+    
+
 }
 
 
